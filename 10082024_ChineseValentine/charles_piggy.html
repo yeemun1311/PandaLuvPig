@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!--<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="static/js/jquery-1.11.0.min.js"><\/script>')</script>
+<script>
+	!(function(a){a.fn.websnowjq=function(b){function q(){(j=document.getElementById('websnowjqcan'+d)),(k=j.getContext('2d')),(l=document.createElement('canvas')),(m=l.getContext('2d')),(m.canvas.width=k.canvas.width),(m.canvas.height=k.canvas.height),(o=setInterval(r,200)),t(),setInterval(v,30),a(window).resize(function(){a('#websnowjqcan'+d).offset({top:a(c).offset().top,left:a(c).offset().left,})})}function r(){(n[n.length]=new s()),n.length==p.snowFlakes&&clearInterval(o)}function s(){(this.x=Math.round(Math.random()*k.canvas.width)),(this.y=-10),(this.speed=Math.round(5*Math.random())+1),(this.width=3*Math.random()+2),(this.drift=Math.random())}function t(){k.save(),u();for(var a=0;a<n.length;a++)m.beginPath(),m.arc(n[a].x,n[a].y,n[a].width,0,2*Math.PI,!1),(m.fillStyle='#ffffff'),m.fill();k.drawImage(l,0,0,l.width,l.height),k.restore()}function u(){m.clearRect(0,0,m.canvas.width,m.canvas.height),k.clearRect(0,0,m.canvas.width,m.canvas.height)}function v(){w(),t()}function w(){for(var a=0;a<n.length;a++)n[a].y<k.canvas.height?((n[a].y+=n[a].speed),n[a].y>k.canvas.height&&(n[a].y=-5),(n[a].x+=n[a].drift),n[a].x>k.canvas.width&&(n[a].x=0)):(n.splice(a,1),(n[n.length]=new s()))}var c=this[0],d=c.id,e=a(c).offset().left,f=a(c).offset().top,g=a(c).height(),h=a(c).width(),i='top:'+f+'px;left:'+e+'px;position:absolute;',j=null,k=null,l=null,m=null,n=[],o=null,p=a.extend({snowFlakes:100,},b);a('body').append("<canvas width='"+h+"' height='"+g+"' id='websnowjqcan"+d+"' style='"+i+"'></canvas>"),q()}})(jQuery);
+</script>-->
+
+<title>💗</title>
+<style>
+html, body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: black;
+	overflow: hidden;
+}
+
+/*Style of love*/
+canvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+/*Style of snow*/
+/*#divSnow{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}*/
+
+/*Style of Footer*/
+#footer_date {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	color: white;
+}
+
+/*Background Video*/
+/*Style of text*/
+.typing {
+	position: absolute;
+	text-align: center;
+	height: 180px;
+	color: #f1dadb;
+	padding: 20px;
+}
+
+@media screen and (max-width: 2560px) { 
+	#myVideo { 
+		margin: -200px 0 0 370px;
+        width: 500px;
+	}
+	
+	.typing {
+		bottom: 25%;
+		left: 38%;
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width: 1024px) { 
+	#myVideo { 
+		margin: -400px 0 0 0;
+        width: 980px;
+	}
+	
+	.typing {
+		top: 41%;
+		left: 29%;
+		font-size: 30px;
+	}
+}
+
+</style>
+</head>
+
+<body>
+
+<div>
+<video autoplay muted loop id="myVideo" onclick="heart()">
+	<source src="memory.mp4" type="video/mp4">
+</video>
+</div>
+<!--<div id="divSnow"></div>-->
+
+<audio id="audioDom" src="https://sf6-cdn-tos.douyinstatic.com/obj/ies-music/7170534431801838367.mp3" 
+	preload="auto" loop="loop"></audio>
+
+<canvas id="heart" width="1920" height="947"></canvas>
+
+<div class="typing" id="typing"></div>
+
+<div id="footer_date">
+	<p>10/08/2024 七夕情人节快乐💗</p>
+</div>
+
+<script>
+document.getElementById("myVideo").play();
+//document.querySelector('#audioDom').play(); // Play music
+
+// Script of snow
+/*$(function () {
+	$("#divSnow").websnowjq();
+});*/
+
+// Script of heart
+
+function heart(){
+	document.getElementById("myVideo").style.display = "none";
+	window.requestAnimationFrame =
+	window.__requestAnimationFrame ||
+	window.requestAnimationFrame ||
+	window.webkitRequestAnimationFrame ||
+	window.mozRequestAnimationFrame ||
+	window.oRequestAnimationFrame ||
+	window.msRequestAnimationFrame ||
+	(function () {
+		return function (callback, element) {
+			var lastTime = element.__lastTime;
+			if (lastTime === undefined) {
+				lastTime = 0;
+			}
+			var currTime = Date.now();
+			var timeToCall = Math.max(1, 33 - (currTime - lastTime));
+			window.setTimeout(callback, timeToCall);
+			element.__lastTime = currTime + timeToCall;
+		};
+	})();
+	window.isDevice = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(((navigator.userAgent || navigator.vendor || window.opera)).toLowerCase()));
+	var loaded = false;
+	var init = function () {
+		if (loaded) return;
+		loaded = true;
+		var mobile = window.isDevice;
+		var koef = mobile ? 0.5 : 1;
+		var canvas = document.getElementById('heart');
+		var ctx = canvas.getContext('2d');
+		var width = canvas.width = koef * innerWidth;
+		var height = canvas.height = koef * innerHeight;
+		var rand = Math.random;
+		ctx.fillStyle = "rgba(0,0,0,1)";
+		ctx.fillRect(0, 0, width, height);
+
+		var heartPosition = function (rad) {
+			//return [Math.sin(rad), Math.cos(rad)];
+			return [Math.pow(Math.sin(rad), 3), -(15 * Math.cos(rad) - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad))];
+		};
+		var scaleAndTranslate = function (pos, sx, sy, dx, dy) {
+			return [dx + pos[0] * sx, dy + pos[1] * sy];
+		};
+		window.addEventListener('resize', function () {
+			width = canvas.width = koef * innerWidth;
+			height = canvas.height = koef * innerHeight;
+			ctx.fillStyle = "rgba(0,0,0,1)";
+			ctx.fillRect(0, 0, width, height);
+		});
+		var traceCount = mobile ? 20 : 50;
+		var pointsOrigin = [];
+		var i;
+		var dr = mobile ? 0.3 : 0.1;
+		for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210, 13, 0, 0));
+		for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150, 9, 0, 0));
+		for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5, 0, 0));
+		var heartPointsCount = pointsOrigin.length;
+		var targetPoints = [];
+		var pulse = function (kx, ky) {
+			for (i = 0; i < pointsOrigin.length; i++) {
+				targetPoints[i] = [];
+				targetPoints[i][0] = kx * pointsOrigin[i][0] + width / 2;
+				targetPoints[i][1] = ky * pointsOrigin[i][1] + height / 2;
+			}
+		};
+		var e = [];
+		for (i = 0; i < heartPointsCount; i++) {
+			var x = rand() * width;
+			var y = rand() * height;
+			e[i] = {
+				vx: 0,
+				vy: 0,
+				R: 2,
+				speed: rand() + 5,
+				q: ~~(rand() * heartPointsCount),
+				D: 2 * (i % 2) - 1,
+				force: 0.2 * rand() + 0.7,
+				f: "hsla(0," + ~~(40 * rand() + 60) + "%," + ~~(60 * rand() + 20) + "%,.3)",
+				trace: []
+			};
+			for (var k = 0; k < traceCount; k++) e[i].trace[k] = {x: x, y: y};
+		}
+		var config = {
+			traceK: 0.4,
+			timeDelta: 0.01
+		};
+		var time = 0;
+		var loop = function () {
+			var n = -Math.cos(time);
+			pulse((1 + n) * .5, (1 + n) * .5);
+			time += ((Math.sin(time)) < 0 ? 9 : (n > 0.8) ? .2 : 1) * config.timeDelta;
+			ctx.fillStyle = "rgba(0,0,0,.1)";
+			ctx.fillRect(0, 0, width, height);
+			for (i = e.length; i--;) {
+				var u = e[i];
+				var q = targetPoints[u.q];
+				var dx = u.trace[0].x - q[0];
+				var dy = u.trace[0].y - q[1];
+				var length = Math.sqrt(dx * dx + dy * dy);
+				if (10 > length) {
+					if (0.95 < rand()) {
+						u.q = ~~(rand() * heartPointsCount);
+					} else {
+						if (0.99 < rand()) {
+							u.D *= -1;
+						}
+						u.q += u.D;
+						u.q %= heartPointsCount;
+						if (0 > u.q) {
+							u.q += heartPointsCount;
+						}
+					}
+				}
+				u.vx += -dx / length * u.speed;
+				u.vy += -dy / length * u.speed;
+				u.trace[0].x += u.vx;
+				u.trace[0].y += u.vy;
+				u.vx *= u.force;
+				u.vy *= u.force;
+				for (k = 0; k < u.trace.length - 1;) {
+					var T = u.trace[k];
+					var N = u.trace[++k];
+					N.x -= config.traceK * (N.x - T.x);
+					N.y -= config.traceK * (N.y - T.y);
+				}
+				ctx.fillStyle = u.f;
+				for (k = 0; k < u.trace.length; k++) {
+					ctx.fillRect(u.trace[k].x, u.trace[k].y, 1, 1);
+				}
+			}
+			ctx.fillStyle = "rgba(255, 0, 0, 0.2)";
+			for (i = u.trace.length + 13; i--;) ctx.fillRect(targetPoints[i][0], targetPoints[i][1], 2, 2);
+			
+			window.requestAnimationFrame(loop, canvas);
+		};
+		loop();
+	};
+
+	var s = document.readyState;
+	if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
+	else document.addEventListener('DOMContentLoaded', init, false);
+	
+	//Script of "I LOVE YOU" text
+	function start() {
+		const text = [
+			"I LOVE YOU BB❤️",
+			"Charles Piggy，我永远爱你🐽"
+		]
+		let str = text.join('<br><br>')
+		let str_ = ''
+		let i = 0
+		let content = document.getElementById('typing')
+		let timer = setInterval(() => {
+			if (str_.length < str.length) {
+				str_ += str[i++]
+				content.innerHTML = '<p>' + str_ + '<span class="xx" style="opacity: 1;    color: red;">❤</span></p>' //打印时加光标
+			} else {
+				clearInterval(timer)
+				content.innerHTML = '<p>' + str_ + '</p>'
+			}
+		}, 50)
+	}
+	setTimeout(() => {
+		start();
+	}, 500);
+}
+
+// Script of music
+function musicPlay(isPlay) {
+    var media = document.querySelector('#audioDom');
+    if (isPlay && media.paused) {
+		media.play();
+    }
+    if (!isPlay && !media.paused) {
+        media.pause();
+    }
+}
+
+function musicInBrowserHandler() {
+    setTimeout(function () {
+		musicPlay(true);
+    }, 0);
+}
+document.body.addEventListener('touchstart', musicInBrowserHandler);
+document.body.addEventListener('click', musicInBrowserHandler);
+
+// Script of play video
+/*function playVideo(isPlay) {
+    var media = document.querySelector('#myVideo');
+    if (isPlay && media.paused) {
+		media.play();
+    }
+    if (!isPlay && !media.paused) {
+        media.pause();
+    }
+}
+
+function videoInBrowserHandler() {
+    setTimeout(function () {
+		playVideo(true);
+    }, 0);
+}
+document.body.addEventListener('touchstart', videoInBrowserHandler);
+document.body.addEventListener('click', videoInBrowserHandler);*/
+
+// Script of Rain
+/*var context;
+var rains = new Array();
+var rainCount =20;
+
+//初始化画布及context
+function init2(){
+	//获取canvas
+	var stars = document.getElementById("heart");
+	windowWidth = window.innerWidth; //当前的窗口的高度
+	stars.width=windowWidth;
+	stars.height=window.innerHeight;
+	//获取context
+	context = stars.getContext("2d");
+}
+
+//页面加载的时候
+window.onload = function() {
+	init2();
+	//画流星
+	for (var i=0;i<rainCount;i++) {
+		var rain = new MeteorRain();
+		rain.init2();
+		rain.draw();
+		rains.push(rain);
+	}
+	playRains();//绘制流星
+}
+
+var MeteorRain = function(){
+	this.x = -1;
+	this.y = -1;
+	this.length = -1;//长度
+	this.angle = 30; //倾斜角度
+	this.width = -1;//宽度
+	this.height = -1;//高度
+	this.speed = 1;//速度
+	this.offset_x = -1;//横轴移动偏移量
+	this.offset_y = -1;//纵轴移动偏移量
+	this.alpha = 1; //透明度
+	this.color1 = "#ea80b0";//流星的色彩
+	this.color2 = "";  //流星的色彩
+	
+	this.init2 = function (){ //初始化
+		this.getPos();
+        this.alpha = 1;//透明度
+        this.getRandomColor();
+        //最小长度，最大长度
+        var x = Math.random() * 80 + 150;
+        this.length = Math.ceil(x);
+		//x = Math.random()*10+30;
+        this.angle = 30; //流星倾斜角
+        x = Math.random()+0.5;
+        this.speed = Math.ceil(x); //流星的速度
+        var cos = Math.cos(this.angle*3.14/180);
+        var sin = Math.sin(this.angle*3.14/180) ;
+        this.width = this.length*cos ;  //流星所占宽度
+        this.height = this.length*sin ;//流星所占高度
+        this.offset_x = this.speed*cos ;
+        this.offset_y = this.speed*sin;
+    }
+	
+	this.getRandomColor = function (){
+        var a = Math.ceil(255-240* Math.random());
+        //中段颜色
+        this.color1 = "rgba("+a+","+a+","+a+",1)";
+        //结束颜色
+        this.color2 = "black";
+    }
+	
+	this.countPos = function (){
+        //往左下移动,x减少，y增加
+        this.x = this.x - this.offset_x;
+        this.y = this.y + this.offset_y;
+    }
+	
+	this.getPos = function (){
+        //横坐标200--1200
+        this.x = Math.random() * window.innerWidth; //窗口高度
+        //纵坐标小于600
+        this.y = Math.random() * window.innerHeight;  //窗口宽度
+    }
+    
+	this.draw = function (){ //绘制一个流星的函数
+        context.save();
+        context.beginPath();
+        context.lineWidth = 1; //宽度
+        context.globalAlpha = this.alpha; //设置透明度
+        //创建横向渐变颜色,起点坐标至终点坐标
+        var line = context.createLinearGradient(this.x, this.y,
+            this.x + this.width,
+            this.y - this.height);
+
+        //分段设置颜色
+        line.addColorStop(0, "#ea80b0");
+        line.addColorStop(0.3, this.color1);
+        line.addColorStop(0.6, this.color2);
+        context.strokeStyle = line;
+        //起点
+        context.moveTo(this.x, this.y);
+        //终点
+        context.lineTo(this.x + this.width, this.y - this.height);
+        context.closePath();
+        context.stroke();
+        context.restore();
+    }
+	
+    this.move = function(){
+        //清空流星像素
+        var x = this.x+this.width-this.offset_x;
+        var y = this.y-this.height;
+        context.clearRect(x-3,y-3,this.offset_x+5,this.offset_y+5);
+		//context.strokeStyle="red";
+		//context.strokeRect(x,y-1,this.offset_x+1,this.offset_y+1);
+        //重新计算位置，往左下移动
+        this.countPos();
+        //透明度增加
+        this.alpha -= 0.002;
+        //重绘
+        this.draw();
+    }
+}
+
+//绘制流星
+function playRains(){
+    for (var n = 0; n < rainCount; n++){
+        var rain = rains[n];
+        rain.move();//移动
+        if(rain.y>window.innerHeight){//超出界限后重来
+            context.clearRect(rain.x,rain.y-rain.height,rain.width,rain.height);
+            rains[n] = new MeteorRain();
+            rains[n].init2();
+        }
+    }
+    setTimeout("playRains()",2);
+}*/
+</script>
+
+</body></html>
