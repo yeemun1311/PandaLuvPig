@@ -17,21 +17,23 @@
 
     <!-- Custom CSS -->
     <style>
-        #menu-list {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        .menu-logo {
+            max-width: 150px;
+            height: auto;
+        }
+        .nav-link {
+            font-size: 1rem;
+            padding: 0.75rem 1rem;
         }
     </style>
 </head>
 <body>
-    <div id="main-page">
+    <div id="main-page" class="d-flex justify-content-center align-items-center vh-100">
         <main>
-            <div id="menu-list">
+            <div id="menu-list" class="text-center">
                 <ul class="nav flex-column align-items-center">
-                    <li class="nav-item">
-                        <img src="img/PandaLuvPig_logo.png" alt="PandaLuvPig Logo" class="img-fluid mb-3" style="width: 150px; height: auto;">
+                    <li class="nav-item mb-3">
+                        <img src="img/PandaLuvPig_logo.png" alt="PandaLuvPig Logo" class="img-fluid menu-logo">
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex justify-content-center align-items-center gap-2" href="21082025_HB/charles_piggy.html">
